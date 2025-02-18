@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentTime >= 890 && currentTime <= 1020) {
             hotspots["swimming-pool"].style.backgroundColor = "red";
             hotspots["tennis-court"].style.backgroundColor = "red";
-            hotspots["rejendra"].style.backgroundColor = "red";
+            hotspots["rajendra"].style.backgroundColor = "red";
         }
 
         const timestamp = document.getElementById("timestamp");

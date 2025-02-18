@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 labels: ["7:00", "9:00", "11:00", "13:00", "15:00", "17:00", "19:00"],
                 datasets: [{
                     label: `${location.replace("-", " ")} ABG Density`,
-                    data: [10, 30, 50, 70, 90, 60, 40],
+                    data: [1, 3, 5, 7, 9, 6, 4],
                     borderColor: "red",
                     borderWidth: 2,
                     fill: false

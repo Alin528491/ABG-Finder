@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABG Finder</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-logo">
+            <span class="cdc-text">ISB ABG</span> <br> 
+            <span class="cdc-normal">FINDER</span>
+        </div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Smooth Scroll Wrapper -->
+    <div id="smooth-wrapper" style="opacity: 0;">
+        <div id="smooth-content">
+
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+                <div class="container">
+                    <a class="navbar-brand text-danger fw-bold" id="backdoor">ABG FINDER</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-warning" href="#hotspots">ABG HOTSPOTS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Home Section -->
+            <section id="home" class="home">
+                <h1 class="home-title">ABG FINDER</h1> 
+                <h2 class="home-subtitle">Rizzing for the future</h2> 
+            </section>
+
+            <!-- ABG Hotspots Section -->
+            <section id="hotspots" class="section">
+                <h2 class="section-title">ABG Hotspots</h2>
+                
+                <!-- Color Legend -->
+                <div class="legend">
+                    <span class="legend-item" style="background-color: red;">High</span>
+                    <span class="legend-item" style="background-color: orange;">Medium</span>
+                    <span class="legend-item" style="background-color: yellow;">Low</span>
+                </div>
+
+                <!-- Last Updated Timestamp -->
+                <p class="last-updated">Last Updated: <span id="timestamp"></span></p>
+
+                <div class="heatmap-container">
+                    <div class="heatmap-grid">
+                        <button class="heatmap-cell" id="cafeteria">Cafeteria</button>
+                        <button class="heatmap-cell" id="upper-grind">Upper Grind</button>
+                        <button class="heatmap-cell" id="swimming-pool">Swimming Pool</button>
+                        <button class="heatmap-cell" id="tennis-court">Tennis Court</button>
+                        <button class="heatmap-cell" id="breeze-way">Breeze Way</button>
+                        <button class="heatmap-cell" id="rejendra">Rajendra</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Graph Modal -->
+    <div id="graphModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeGraph">&times;</span>
+            <h2 id="modalTitle">Location Name</h2>
+            <canvas id="detailGraph"></canvas>
+        </div>
+    </div>
+
+    <!-- Admin Backdoor Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <h2>Enter PIN</h2>
+            <div id="pinContainer">
+                <input type="password" id="pinInput" maxlength="4">
+                <button id="submitPin">Enter</button>
+            </div>
+            <span class="close" id="closeAdmin">&times;</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>By <span class="signature">Alin The Sigma</span> | Made with HTML, CSS & JavaScript | V4.1</p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- GSAP & Smooth Scrolling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>

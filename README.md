@@ -1,1 +1,1 @@
-# I love ABGs
+# I would like to extend my heartfelt gratitude to the ABGs who inspired this entire project. Making a positive impact on the community has always been a long-term goal of mine, and being able to achieve that through the ABG Finder has been incredibly fulfilling. This project wouldn't have been possible without the inspiration and support of the ABGs, and I hope it continues to serve and benefit the community for years to come.

@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Page loaded. Running scripts...");
 
-    // === OLD FUNCTIONALITY (KEPT INTACT) ===
     const loadingScreen = document.getElementById("loading-screen");
     const smoothWrapper = document.getElementById("smooth-wrapper");
 
@@ -17,62 +16,59 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 1.5, 
             delay: 2, 
             onComplete: () => {
-                console.log("✅ Loading screen animation complete.");
+                console.log("Loading screen animation complete.");
                 loadingScreen.style.display = "none";
             }
         });
     } else {
-        console.warn("⚠️ Loading screen not found.");
+        console.warn("Loading screen not found.");
     }
 
     if (smoothWrapper) {
         gsap.to("#smooth-wrapper", { opacity: 1, duration: 1.5, delay: 2.5 });
     } else {
-        console.warn("⚠️ Smooth wrapper not found.");
+        console.warn("Smooth wrapper not found.");
     }
 
-    // === FIXED: STOP JUMPING TO HOME PAGE ON LOCATION CLICKS ===
     document.querySelectorAll('.heatmap-cell').forEach(cell => {
         cell.addEventListener("click", function (event) {
-            event.preventDefault(); // Stops jumping
+            event.preventDefault();
             openGraph(this.id);
         });
     });
 
-    // === BACKDOOR SYSTEM: "ABG FINDER" TEXT AS SECRET BUTTON ===
     let clickCount = 0;
     let clickTimer;
 
-    const abgFinderLogo = document.querySelector(".navbar .logo, .navbar h1, .abg-finder-text"); // Adjust to match your structure
+    const abgFinderLogo = document.querySelector(".navbar .logo, .navbar h1, .abg-finder-text");
 
     if (abgFinderLogo) {
-        console.log("🟢 ABG FINDER text detected as backdoor trigger.");
+        console.log("ABG FINDER text detected as backdoor trigger.");
 
-        // **Make sure it's clickable**
         abgFinderLogo.style.cursor = "pointer";
 
         abgFinderLogo.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevents default behavior
+            event.preventDefault();
             clickCount++;
-            console.log(`🔎 Click detected: ${clickCount}`);
+            console.log(`Click detected: ${clickCount}`);
 
             if (clickCount === 1) {
                 clickTimer = setTimeout(() => {
                     clickCount = 0;
-                    console.log("🔄 Redirecting to home page.");
-                    window.location.href = "index.html"; // Change this if needed
-                }, 1000); // If only 1 click in 1 sec, go to home
+                    console.log("Redirecting to home page.");
+                    window.location.href = "index.html";
+                }, 1000);
             }
 
             if (clickCount >= 4) {
                 clearTimeout(clickTimer);
                 clickCount = 0;
-                console.log("🔑 Backdoor activated!");
+                console.log("Backdoor activated.");
                 openKeypad();
             }
         });
     } else {
-        console.warn("⚠️ ABG FINDER text not found.");
+        console.warn("ABG FINDER text not found.");
     }
 
     function openKeypad() {
@@ -80,9 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (keypadOverlay) {
             keypadOverlay.style.display = "flex";
             document.getElementById("pinInput").value = "";
-            console.log("🔓 Keypad displayed.");
+            console.log("Keypad displayed.");
         } else {
-            console.error("❌ Keypad overlay element not found.");
+            console.error("Keypad overlay element not found.");
         }
     }
 
@@ -90,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("keypadOverlay").style.display = "none";
     }
 
-    // === FIXED: KEYPAD FUNCTIONALITY ===
     const pinInput = document.getElementById("pinInput");
     const submitPin = document.getElementById("submitPin");
     const backspace = document.getElementById("backspace");
@@ -111,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitPin.addEventListener("click", function () {
         if (pinInput.value === correctPin) {
-            console.log("✅ Correct PIN entered. Redirecting...");
+            console.log("Correct PIN entered. Redirecting...");
             window.location.href = "admin.html";
         } else {
             errorMsg.textContent = "Incorrect PIN";
@@ -120,9 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // === FIXED: UPDATE HOTSPOTS BASED ON TIME ===
     function updateHotspots() {
-        console.log("🔄 Updating hotspots...");
+        console.log("Updating hotspots...");
 
         const now = new Date();
         const currentTime = now.getHours() * 60 + now.getMinutes();
@@ -136,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "rajendra": document.getElementById("rajendra")
         };
 
-        // Reset all to yellow (low)
         Object.values(hotspots).forEach(el => el.style.backgroundColor = "yellow");
 
         if ((currentTime >= 435 && currentTime <= 465) || (currentTime >= 680 && currentTime <= 720)) {
@@ -155,16 +148,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (timestamp) {
             timestamp.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
         } else {
-            console.warn("⚠️ Timestamp element not found.");
+            console.warn("Timestamp element not found.");
         }
 
-        console.log("✅ Hotspots updated.");
+        console.log("Hotspots updated.");
     }
 
     setInterval(updateHotspots, 1000);
     updateHotspots();
 
-    // === GRAPH FUNCTION (SHOWS WHEN LOCATION IS CLICKED) ===
     function openGraph(location) {
         const modal = document.getElementById("graphModal");
         const modalTitle = document.getElementById("modalTitle");
@@ -199,10 +191,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === CLOSE BUTTON WORKS FOR ALL GRAPHS ===
     document.querySelector(".close").addEventListener("click", function () {
-        console.log("❌ Closing graph modal...");
+        console.log("Closing graph modal...");
         document.getElementById("graphModal").style.display = "none";
     });
-
 });

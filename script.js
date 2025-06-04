@@ -146,7 +146,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const timestamp = document.getElementById("timestamp");
         if (timestamp) {
-            timestamp.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            timestamp.innerText = now.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
         } else {
             console.warn("Timestamp element not found.");
         }
@@ -154,8 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Hotspots updated.");
     }
 
+    setTimeout(updateHotspots, 500);
     setInterval(updateHotspots, 1000);
-    updateHotspots();
 
     function openGraph(location) {
         const modal = document.getElementById("graphModal");
@@ -191,8 +196,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    document.querySelector(".close").addEventListener("click", function () {
-        console.log("Closing graph modal...");
-        document.getElementById("graphModal").style.display = "none";
+    document.querySelectorAll(".close").forEach(button => {
+        button.addEventListener("click", function () {
+            const modal = this.closest(".modal");
+            if (modal) {
+                console.log("Closing graph modal...");
+                modal.style.display = "none";
+            }
+        });
     });
 });

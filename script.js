@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("🚀 Page loaded. Running scripts...");
+    console.log("Page loaded. Running scripts...");
 
     // === OLD FUNCTIONALITY (KEPT INTACT) ===
     const loadingScreen = document.getElementById("loading-screen");

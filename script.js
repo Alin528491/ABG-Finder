@@ -100,20 +100,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    backspace.addEventListener("click", function () {
-        pinInput.value = pinInput.value.slice(0, -1);
-    });
+    // Only add event listeners if the elements exist
+    if (backspace) {
+        backspace.addEventListener("click", function () {
+            pinInput.value = pinInput.value.slice(0, -1);
+        });
+    }
 
-    submitPin.addEventListener("click", function () {
-        if (pinInput.value === correctPin) {
-            console.log("Correct PIN entered. Redirecting...");
-            window.location.href = "admin.html";
-        } else {
-            errorMsg.textContent = "Incorrect PIN";
-            setTimeout(() => { errorMsg.textContent = ""; }, 2000);
-            pinInput.value = "";
-        }
-    });
+    if (submitPin) {
+        submitPin.addEventListener("click", function () {
+            if (pinInput.value === correctPin) {
+                console.log("Correct PIN entered. Redirecting...");
+                window.location.href = "admin.html";
+            } else {
+                errorMsg.textContent = "Incorrect PIN";
+                setTimeout(() => { errorMsg.textContent = ""; }, 2000);
+                pinInput.value = "";
+            }
+        });
+    }
 
     function updateHotspots() {
         console.log("Updating hotspots...");

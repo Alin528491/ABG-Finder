@@ -197,11 +197,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.querySelectorAll(".close").forEach(button => {
-        button.addEventListener("click", function () {
-            const modal = this.closest(".modal");
-            if (modal) {
+        button.addEventListener("click", function() {
+            const graphModal = document.getElementById("graphModal");
+            if (graphModal) {
                 console.log("Closing graph modal...");
-                modal.style.display = "none";
+                graphModal.style.display = "none";
+                if (window.detailChart) {
+                    window.detailChart.destroy();
+                }
             }
         });
     });
